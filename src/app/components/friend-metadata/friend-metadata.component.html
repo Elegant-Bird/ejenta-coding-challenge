@@ -1,0 +1,58 @@
+<mat-accordion>
+  <mat-expansion-panel *ngIf="guestList?.length">
+    <mat-expansion-panel-header>
+      <mat-panel-title>All Known People</mat-panel-title>
+      <mat-panel-description>
+        All of the people you've imported from your guest list.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let guest of guestList">
+        <span>{{ guest.firstName }} {{ guest.lastName }}</span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngIf="associatedFriends.length">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Who Knows Who?? </mat-panel-title>
+      <mat-panel-description>
+        A comprehensive list of who knows who
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="row" fxLayoutAlign="center">
+      <mat-card *ngFor="let friend of associatedFriends" class="col-md-2 m-2">
+        <mat-card-header>
+          <span class="me-2">
+            {{ getDisplayName(friend.primary) }}
+          </span>
+          <span> <mat-hint>knows</mat-hint> </span>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <div *ngFor="let assc of friend.friends">
+              {{ getDisplayName(assc) }}
+            </div>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngIf="popularPeople?.length">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Popular People</mat-panel-title>
+      <mat-panel-description>
+        All of the people who meet your minimum known friends requirement.
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let guest of popularPeople">
+        <span>
+          {{ getDisplayName(guest.primary) }}
+          <mat-hint> ({{ guest.friends.length }} friends)</mat-hint>
+        </span>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

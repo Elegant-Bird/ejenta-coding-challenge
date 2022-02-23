@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "32564c83-05a9-4ce1-990c-b1502d59a261"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,6 +34,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -89,6 +93,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
@@ -99,6 +104,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,0 +1,19 @@
+<mat-card class="m-2">
+  <mat-card-header fxLayoutAlign="center">
+    <mat-card-title>People List Uploader</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Drag and drop your file below, or open from your file manager to
+      select a valid json file!
+    </p>
+    <form [formGroup]="fileForm">
+      <file-upload
+        formControlName="files"
+        [multiple]="false"
+        [animation]="true"
+      ></file-upload>
+      <mat-error *ngIf="errorText">{{errorText}}</mat-error>
+    </form>
+  </mat-card-content>
+</mat-card>

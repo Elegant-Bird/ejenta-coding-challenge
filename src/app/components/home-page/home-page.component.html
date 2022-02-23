@@ -1,0 +1,18 @@
+<div class="p-home-page">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <app-people-uploader (validFileUploaded)="guestList = $event"></app-people-uploader>
+    <app-friend-pair-uploader (validFileUploaded)="friendsList = $event"></app-friend-pair-uploader>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <app-invite-generator [associatedFriends]="associatedFriends" (minimumFriendsChanged)="minFriends = $event"></app-invite-generator>
+  </div>
+
+  <div class="row m-1" fxLayoutAlign="center">
+    <app-friend-metadata
+      [guestList]="guestList"
+      [minimumKnownFriends]="minFriends"
+      [associatedFriends]="associatedFriends"
+    ></app-friend-metadata>
+  </div>
+</div>

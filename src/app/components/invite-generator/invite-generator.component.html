@@ -1,0 +1,34 @@
+<mat-card class="m-1">
+  <mat-card-header fxLayoutAlign="center">
+    <mat-card-title>Invite List Requirements</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      By default, the Party Snubber is using the .json files located in the
+      assets folder. You can change this by uploading new lists, via json,
+      above
+    </p>
+    <mat-form-field class="w-100">
+      <mat-label>How many people should a person know?</mat-label>
+      <input matInput type="number" [formControl]="minimumKnownFriends" />
+    </mat-form-field>
+    <button mat-flat-button color="warn" (click)="generateInviteList()">
+      Generate Invite List
+    </button>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="inviteList.length">
+  <mat-card class="m-1">
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title>Final Invite List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let guest of inviteList">
+          <span>{{ guest.firstName }} {{ guest.lastName }}</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
